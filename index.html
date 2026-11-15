@@ -14,7 +14,9 @@
   --white: #ffffff;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 html, body {
   margin: 0;
@@ -76,7 +78,9 @@ body::before {
   transform: scale(1.04);
 }
 
-.brand span, .footer-brand span { color: #a9c5ff; }
+.brand span {
+  color: #a9c5ff;
+}
 
 .brand-icon {
   width: 39px;
@@ -89,6 +93,8 @@ body::before {
   font-size: 21px;
   box-shadow: 0 5px 25px #7093ee55;
 }
+
+/* НАВИГАЦИЯ */
 
 .navigation {
   display: flex;
@@ -103,6 +109,7 @@ body::before {
   color: #ffffff;
   background: #aab5c522;
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid #ffffff30;
   border-radius: 13px;
   padding: 11px 20px;
@@ -119,7 +126,11 @@ body::before {
   box-shadow: 0 8px 30px #00000025;
 }
 
-.nav-button:active { transform: scale(.97); }
+.nav-button:active {
+  transform: scale(.97);
+}
+
+/* АВАТАРКА */
 
 .avatar-button {
   width: 47px;
@@ -154,73 +165,36 @@ body::before {
   height: 100%;
 }
 
-/* ГЛАВНАЯ ОБЛОЖКА */
+/* ГЛАВНЫЙ ЭКРАН */
 
 #home {
   flex: 1;
   min-height: 650px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 45px 35px;
-}
-
-.hero-cover {
-  position: relative;
-  width: 100%;
-  min-height: 560px;
-  border-radius: 25px;
-  overflow: hidden;
-  display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 65px;
-  background-color: #182746;
-  background-image:
-    radial-gradient(ellipse at 50% 35%, #40598c 0%, transparent 65%),
-    linear-gradient(135deg, #10182d, #263b69);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: 0 20px 65px #00000035;
-  transition: background-image .3s;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(5, 10, 25, .88) 0%,
-    rgba(5, 10, 25, .55) 55%,
-    rgba(5, 10, 25, .15) 100%
-  );
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 750px;
-  text-align: left;
+  justify-content: center;
+  padding: 50px 20px 90px;
+  text-align: center;
 }
 
 .hero-logo {
   font-size: clamp(55px, 9vw, 100px);
   font-weight: bold;
   letter-spacing: -3px;
-  text-shadow: 0 10px 50px #00000055;
+  text-shadow: 0 10px 50px #00000035;
   margin-bottom: 8px;
 }
 
-.hero-logo span { color: #a9c5ff; }
+.hero-logo span {
+  color: #a9c5ff;
+}
 
 .hero-description {
-  color: #d1ddf8;
+  color: #c4d0e9;
   font-size: 16px;
   letter-spacing: 3px;
-  margin-bottom: 40px;
+  margin-bottom: 55px;
 }
 
 .registration-message {
@@ -228,10 +202,10 @@ body::before {
   width: 100%;
   padding: 27px 25px;
   border-radius: 19px;
-  background: #ffffff18;
-  border: 1px solid #ffffff40;
+  background: #ffffff12;
+  border: 1px solid #ffffff30;
   backdrop-filter: blur(18px);
-  box-shadow: 0 15px 60px #00000025;
+  box-shadow: 0 15px 60px #00000020;
 }
 
 .registration-message h2 {
@@ -240,7 +214,7 @@ body::before {
 }
 
 .registration-message p {
-  color: #e0e8fa;
+  color: #d0d9ef;
   line-height: 1.7;
   margin: 0;
 }
@@ -250,8 +224,8 @@ body::before {
   margin-top: 18px;
   padding: 9px 17px;
   border-radius: 9px;
-  background: #9db8ff33;
-  color: #d8e4ff;
+  background: #9db8ff22;
+  color: #c6d7ff;
   font-weight: bold;
 }
 
@@ -285,7 +259,7 @@ body::before {
   margin-top: 15px;
 }
 
-/* О НАС */
+/* СТРАНИЦА О НАС */
 
 .about-card {
   max-width: 650px;
@@ -329,6 +303,7 @@ body::before {
   background: #080e1c66;
   border-top: 1px solid #ffffff18;
   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   position: relative;
   z-index: 5;
 }
@@ -347,6 +322,10 @@ body::before {
   font-size: 22px;
   font-weight: bold;
   white-space: nowrap;
+}
+
+.footer-brand span {
+  color: #a9c5ff;
 }
 
 .footer-links {
@@ -381,6 +360,11 @@ body::before {
   background: #ffffff20;
   border-color: #a9c5ff80;
   transform: translateY(-3px);
+  box-shadow: 0 5px 20px #00000025;
+}
+
+.footer-button .telegram-icon {
+  font-size: 17px;
 }
 
 .footer-bottom {
@@ -416,7 +400,9 @@ body::before {
   backdrop-filter: blur(20px);
 }
 
-.login-card h2 { margin-top: 0; }
+.login-card h2 {
+  margin-top: 0;
+}
 
 .primary-button {
   width: 100%;
@@ -511,7 +497,11 @@ body::before {
   cursor: pointer;
 }
 
-.back-button:hover { background: #ffffff35; }
+.back-button:hover {
+  background: #ffffff35;
+}
+
+/* ПОДВАЛ В ПРОФИЛЕ */
 
 .profile-footer {
   position: relative;
@@ -524,12 +514,18 @@ body::before {
   backdrop-filter: blur(18px);
 }
 
-.profile-footer .footer-content { justify-content: center; }
-.profile-footer .footer-bottom { margin-top: 15px; }
+.profile-footer .footer-content {
+  justify-content: center;
+}
+
+.profile-footer .footer-bottom {
+  margin-top: 15px;
+}
 
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 
 @media(max-width: 850px) {
+
   .topbar {
     flex-wrap: wrap;
     justify-content: space-between;
@@ -537,7 +533,9 @@ body::before {
     gap: 12px;
   }
 
-  .brand { font-size: 21px; }
+  .brand {
+    font-size: 21px;
+  }
 
   .navigation {
     order: 3;
@@ -551,22 +549,18 @@ body::before {
     font-size: 12px;
   }
 
-  .footer { padding: 25px 15px 17px; }
+  .footer {
+    padding: 25px 15px 17px;
+  }
 
   .footer-content {
     justify-content: center;
     text-align: center;
   }
-
-  #home { padding: 25px 15px 45px; }
-
-  .hero-cover {
-    min-height: 520px;
-    padding: 35px 25px;
-  }
 }
 
 @media(max-width: 500px) {
+
   .navigation {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -577,22 +571,18 @@ body::before {
     padding: 12px 5px;
   }
 
-  .registration-message { padding: 22px 17px; }
+  .registration-message {
+    padding: 22px 17px;
+  }
 
-  .registration-message h2 { font-size: 20px; }
+  .registration-message h2 {
+    font-size: 20px;
+  }
 
   .hero-description {
     font-size: 12px;
     letter-spacing: 2px;
   }
-
-  .hero-cover {
-    min-height: 500px;
-    padding: 25px 18px;
-    border-radius: 17px;
-  }
-
-  .hero-content { text-align: center; }
 
   .footer-links {
     display: grid;
@@ -613,11 +603,18 @@ body::before {
     text-align: center;
   }
 
-  .about-card { padding: 25px 18px; }
-  .about-card h1 { font-size: 30px; }
+  .about-card {
+    padding: 25px 18px;
+  }
+
+  .about-card h1 {
+    font-size: 30px;
+  }
 }
 
-[hidden] { display: none !important; }
+[hidden] {
+  display: none !important;
+}
 </style>
 </head>
 
@@ -626,59 +623,82 @@ body::before {
 <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
 
 <header class="topbar" id="topbar" hidden>
+
   <div class="brand" onclick="goHome()">
     <div class="brand-icon">☁</div>
     <div>Be<span>Cloud</span></div>
   </div>
 
   <nav class="navigation">
-    <button class="nav-button" onclick="openPage('play')">Начать играть</button>
-    <button class="nav-button" onclick="openPage('balance')">Пополнить баланс</button>
-    <button class="nav-button" onclick="openPage('forum')">Форум</button>
-    <button class="nav-button" onclick="openPage('about')">О нас</button>
+
+    <button class="nav-button" onclick="openPage('play')">
+      Начать играть
+    </button>
+
+    <button class="nav-button" onclick="openPage('balance')">
+      Пополнить баланс
+    </button>
+
+    <button class="nav-button" onclick="openPage('forum')">
+      Форум
+    </button>
+
+    <button class="nav-button" onclick="openPage('about')">
+      О нас
+    </button>
+
   </nav>
 
   <button class="avatar-button" id="avatarButton" title="Мой аккаунт">
     <img id="avatar" alt="Аккаунт" hidden>
     <span class="avatar-placeholder" id="avatarPlaceholder">👤</span>
   </button>
+
 </header>
 
-<!-- ГЛАВНАЯ С ОБЛОЖКОЙ -->
+<!-- ГЛАВНАЯ -->
 
 <main id="home" hidden>
-  <section class="hero-cover" id="heroCover">
-    <div class="hero-overlay"></div>
 
-    <div class="hero-content">
-      <div class="hero-logo">Be<span>Cloud</span></div>
+  <div class="hero-logo">
+    Be<span>Cloud</span>
+  </div>
 
-      <div class="hero-description">
-        YOUR GAMING PLATFORM
-      </div>
+  <div class="hero-description">
+    YOUR GAMING PLATFORM
+  </div>
 
-      <div class="registration-message">
-        <h2>Спасибо за регистрацию!</h2>
-        <p>
-          Вы стоите в очереди за игрой.
-          Мы рады, что вы выбрали BeCloud!
-        </p>
-        <div class="release-date">
-          Примерная дата выпуска: 27 ноября 2026 года
-        </div>
-      </div>
+  <div class="registration-message">
+
+    <h2>Спасибо за регистрацию!</h2>
+
+    <p>
+      Вы стоите в очереди за игрой.
+      Мы рады, что вы выбрали BeCloud!
+    </p>
+
+    <div class="release-date">
+      Примерная дата выпуска: 27 ноября 2026 года
     </div>
-  </section>
+
+  </div>
+
 </main>
 
 <!-- ВНУТРЕННИЕ СТРАНИЦЫ -->
 
 <main id="subpage">
+
   <h1 class="coming-title">Скоро!</h1>
-  <div class="coming-date">27.11.2026</div>
+
+  <div class="coming-date">
+    27.11.2026
+  </div>
+
   <p class="coming-description">
     Мы работаем над этим разделом BeCloud.
   </p>
+
 </main>
 
 <!-- О НАС -->
@@ -690,7 +710,9 @@ body::before {
   justify-content:center;
   padding:40px 20px;
 ">
+
   <div class="about-card">
+
     <h1>О BeCloud</h1>
 
     <p>
@@ -700,7 +722,8 @@ body::before {
     </p>
 
     <p>
-      О нас вы можете узнать в нашем Telegram-канале:
+      Следите за новостями и разработкой BeCloud
+      в нашем Telegram-канале:
     </p>
 
     <p>
@@ -715,13 +738,17 @@ body::before {
     <p>
       Примерная дата выпуска платформы — 27 ноября 2026 года.
     </p>
+
   </div>
+
 </main>
 
 <!-- ВХОД -->
 
 <main id="login">
+
   <div class="login-card">
+
     <div class="brand" style="justify-content:center;margin-bottom:25px">
       <div class="brand-icon">☁</div>
       <div>Be<span>Cloud</span></div>
@@ -738,67 +765,95 @@ body::before {
     </button>
 
     <div id="err"></div>
+
   </div>
+
 </main>
 
 <!-- ОБЩИЙ ПОДВАЛ -->
 
 <footer class="footer" id="mainFooter" hidden>
+
   <div class="footer-content">
-    <div class="footer-brand">Be<span>Cloud</span></div>
+
+    <div class="footer-brand">
+      Be<span>Cloud</span>
+    </div>
 
     <div class="footer-links">
+
       <a class="footer-button"
          href="https://t.me/CsLite_game"
          target="_blank"
          rel="noopener noreferrer">
-        <span class="telegram-icon">✈</span> Наш Telegram
+        <span class="telegram-icon">✈</span>
+        Наш Telegram
       </a>
 
       <a class="footer-button"
          href="https://t.me/CsLite_game_chat"
          target="_blank"
          rel="noopener noreferrer">
-        <span class="telegram-icon">✈</span> Наш Telegram-чат
+        <span class="telegram-icon">✈</span>
+        Наш Telegram-чат
       </a>
 
-      <button class="footer-button" onclick="openPage('privacy')">
+      <button class="footer-button"
+              onclick="openPage('privacy')">
         🔒 Политика конфиденциальности
       </button>
 
-      <button class="footer-button" onclick="openPage('rules')">
+      <button class="footer-button"
+              onclick="openPage('rules')">
         📋 Правила пользования
       </button>
+
     </div>
+
   </div>
 
   <div class="footer-bottom">
     © 2026 BeCloud. Все права защищены.
   </div>
+
 </footer>
 
 <!-- ПРОФИЛЬ -->
 
 <div id="profile">
+
   <img class="profile-photo" id="profilePhoto" alt="Фото профиля">
+
   <div class="profile-overlay"></div>
 
-  <button class="back-button" onclick="closeProfile()">← Назад</button>
+  <button class="back-button" onclick="closeProfile()">
+    ← Назад
+  </button>
 
   <div class="profile-content">
+
     <h2 id="profileName">Игрок</h2>
+
     <p id="profileEmail"></p>
 
     <button class="primary-button" id="btnOut">
       Выйти из аккаунта
     </button>
+
   </div>
 
+  <!-- ПОДВАЛ ПРОФИЛЯ -->
+
   <footer class="profile-footer">
+
     <div class="footer-content">
-      <div class="footer-brand">Be<span>Cloud</span></div>
+
+      <div class="footer-brand">
+        Be<span>Cloud</span>
+      </div>
 
       <div class="footer-links">
+
         <a class="footer-button"
            href="https://t.me/CsLite_game"
            target="_blank"
@@ -813,20 +868,26 @@ body::before {
           ✈ Наш Telegram-чат
         </a>
 
-        <button class="footer-button" onclick="openPage('privacy')">
+        <button class="footer-button"
+                onclick="openPage('privacy')">
           🔒 Политика конфиденциальности
         </button>
 
-        <button class="footer-button" onclick="openPage('rules')">
+        <button class="footer-button"
+                onclick="openPage('rules')">
           📋 Правила пользования
         </button>
+
       </div>
+
     </div>
 
     <div class="footer-bottom">
       © 2026 BeCloud. Все права защищены.
     </div>
+
   </footer>
+
 </div>
 
 <p id="status" style="text-align:center;color:#c0cce5"></p>
@@ -838,6 +899,7 @@ body::before {
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
+
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyDFLsn0od0tMPWvcGLhhO4iXbxISqS1sSA",
   authDomain: "becloud-gaming-platform.firebaseapp.com",
@@ -857,145 +919,7 @@ const $ = id => document.getElementById(id);
 
 let user = null;
 
-/* =====================================
-   ОБЛОЖКА ИЗ FIREBASE
-   Путь: settings/site/backgroundUrl
-===================================== */
-
-const coverRef = db.ref("settings/site/backgroundUrl");
-
-let currentCoverUrl = "";
-let coverRequestId = 0;
-
-/*
-  ВАЖНО:
-  1) Для любых ссылок вида https://ibb.co.com/ID разверни worker.js
-     (файл прилагается) и вставь URL Worker ниже.
-  2) Для указанной пользователем ссылки уже добавлен прямой URL
-     как резервный вариант — она заработает и без Worker.
-*/
-const IMGBB_WORKER_URL = ""; // Например: https://imgbb-resolver.ТВОЙ-АККАУНТ.workers.dev
-
-const IMGBB_KNOWN_LINKS = {
-  "https://ibb.co.com/V08r78Y5":
-    "https://i.ibb.co/NgzQ8z2b/photo-2026-11-15-23-27-55.jpg"
-};
-
-async function getImgBBDirectUrl(pageUrl) {
-  const normalized = pageUrl.replace(/\/+$/, "");
-
-  // Сначала проверяем известные прямые ссылки.
-  if (IMGBB_KNOWN_LINKS[normalized]) {
-    return IMGBB_KNOWN_LINKS[normalized];
-  }
-
-  // Надёжный универсальный вариант — свой Worker, который читает og:image.
-  if (IMGBB_WORKER_URL.trim()) {
-    const endpoint = new URL(IMGBB_WORKER_URL);
-    endpoint.searchParams.set("url", pageUrl);
-
-    const response = await fetch(endpoint.href);
-    if (!response.ok) {
-      throw new Error("ImgBB Worker вернул HTTP " + response.status);
-    }
-
-    const data = await response.json();
-    if (data && typeof data.image === "string") {
-      const imageUrl = new URL(data.image);
-      if (imageUrl.protocol === "https:" && /(^|\.)ibb\.co$/i.test(imageUrl.hostname)) {
-        return imageUrl.href;
-      }
-    }
-    throw new Error(data?.error || "Worker не вернул прямую ссылку на изображение.");
-  }
-
-  throw new Error(
-    "Для этой ссылки ImgBB нужен Worker. Разверни приложенный worker.js и вставь его адрес в IMGBB_WORKER_URL."
-  );
-}
-
-async function setCover(url) {
-  const cover = $("heroCover");
-  if (!cover) return;
-
-  const cleanUrl = typeof url === "string" ? url.trim() : "";
-  const requestId = ++coverRequestId;
-
-  if (!cleanUrl) {
-    currentCoverUrl = "";
-    cover.style.backgroundImage = `
-      radial-gradient(ellipse at 50% 35%, #40598c 0%, transparent 65%),
-      linear-gradient(135deg, #10182d, #263b69)
-    `;
-    return;
-  }
-
-  let parsedUrl;
-  try {
-    parsedUrl = new URL(cleanUrl);
-  } catch {
-    console.warn("Некорректная ссылка на обложку BeCloud:", cleanUrl);
-    return;
-  }
-
-  if (parsedUrl.protocol !== "https:" && parsedUrl.protocol !== "http:") {
-    console.warn("Разрешены только HTTP- и HTTPS-ссылки на обложку.");
-    return;
-  }
-
-  currentCoverUrl = cleanUrl;
-
-  try {
-    const host = parsedUrl.hostname.toLowerCase();
-    const isImgBBPage =
-      host === "ibb.co" ||
-      host === "www.ibb.co" ||
-      host === "ibb.co.com" ||
-      host === "www.ibb.co.com";
-
-    const imageUrl = isImgBBPage
-      ? await getImgBBDirectUrl(parsedUrl.href.replace(/\/+$/, ""))
-      : parsedUrl.href;
-
-    if (requestId !== coverRequestId) return;
-
-    const safeUrl = new URL(imageUrl);
-    if (safeUrl.protocol !== "https:" && safeUrl.protocol !== "http:") {
-      throw new Error("Недопустимый адрес изображения.");
-    }
-
-    const image = new Image();
-    image.onload = () => {
-      if (requestId !== coverRequestId) return;
-      cover.style.backgroundImage = `url("${safeUrl.href.replace(/["\\]/g, "")}")`;
-      console.info("Обложка BeCloud загружена:", safeUrl.href);
-    };
-    image.onerror = () => {
-      if (requestId !== coverRequestId) return;
-      console.error("Браузер не смог загрузить файл изображения:", safeUrl.href);
-    };
-    image.src = safeUrl.href;
-  } catch (error) {
-    if (requestId !== coverRequestId) return;
-    console.error("Ошибка загрузки обложки BeCloud:", error);
-  }
-}
-
-/* СЛУШАЕМ ИЗМЕНЕНИЯ В БАЗЕ */
-
-coverRef.on("value", snapshot => {
-  const url = snapshot.val();
-
-  if (url === currentCoverUrl) return;
-
-  setCover(url);
-}, error => {
-  console.error("Ошибка загрузки обложки:", error);
-});
-
-/* =====================================
-   СТРАНИЦЫ
-===================================== */
+/* СКРЫТЬ ВСЕ СТРАНИЦЫ */
 
 function hidePages() {
   $("home").hidden = true;
@@ -1005,12 +929,19 @@ function hidePages() {
   $("profile").style.display = "none";
 }
 
+/* ГЛАВНОЕ МЕНЮ */
+
 function goHome() {
+
   hidePages();
+
   $("home").hidden = false;
 }
 
+/* ОТКРЫТИЕ СТРАНИЦ */
+
 function openPage(page) {
+
   hidePages();
 
   const titles = {
@@ -1022,25 +953,27 @@ function openPage(page) {
   };
 
   if (page === "about") {
+
     $("aboutPage").hidden = false;
     $("aboutPage").style.display = "flex";
+
     return;
   }
 
   $("subpage").style.display = "flex";
 
   $("subpage").querySelector(".coming-title").textContent = "Скоро!";
+
   $("subpage").querySelector(".coming-date").textContent = "27.11.2026";
 
   $("subpage").querySelector(".coming-description").textContent =
     (titles[page] || "Раздел") + " — скоро в BeCloud!";
 }
 
-/* =====================================
-   ПРОФИЛЬ
-===================================== */
+/* ПРОФИЛЬ */
 
 function openProfile() {
+
   if (!user) return;
 
   $("profile").style.display = "flex";
@@ -1051,6 +984,7 @@ function openProfile() {
   $("profilePhoto").src =
     user.photoURL ||
     "https://placehold.co/800x1200/263b69/ffffff?text=BeCloud";
+
 }
 
 function closeProfile() {
@@ -1059,64 +993,73 @@ function closeProfile() {
 
 $("avatarButton").onclick = openProfile;
 
-/* =====================================
-   GOOGLE LOGIN
-===================================== */
+/* GOOGLE LOGIN */
 
 $("btnLogin").onclick = async () => {
+
   $("err").textContent = "";
 
   const provider = new firebase.auth.GoogleAuthProvider();
 
   try {
+
     await auth.signInWithPopup(provider);
+
   } catch(e) {
+
     $("err").textContent = "Ошибка входа: " + e.message;
+
   }
+
 };
 
-/* =====================================
-   ВЫХОД
-===================================== */
+/* ВЫХОД */
 
 $("btnOut").onclick = async () => {
+
   try {
     await auth.signOut();
     closeProfile();
   } catch(e) {
     console.error("Ошибка выхода:", e);
   }
+
 };
 
-/* =====================================
-   АВАТАРКА
-===================================== */
+/* АВАТАРКА */
 
 function updateAvatar(u) {
+
   if (u.photoURL) {
+
     $("avatar").src = u.photoURL;
     $("avatar").hidden = false;
     $("avatarPlaceholder").hidden = true;
+
   } else {
+
     $("avatar").hidden = true;
     $("avatarPlaceholder").hidden = false;
+
   }
+
 }
 
-/* =====================================
-   АВТОРИЗАЦИЯ
-===================================== */
+/* АВТОРИЗАЦИЯ */
 
 auth.onAuthStateChanged(async u => {
+
   user = u;
 
   if (!u) {
+
     hidePages();
 
     $("topbar").hidden = true;
     $("mainFooter").hidden = true;
 
     $("login").style.display = "flex";
+
     return;
   }
 
@@ -1126,6 +1069,7 @@ auth.onAuthStateChanged(async u => {
   $("mainFooter").hidden = false;
 
   hidePages();
+
   $("home").hidden = false;
 
   updateAvatar(u);
@@ -1134,19 +1078,27 @@ auth.onAuthStateChanged(async u => {
   $("profileEmail").textContent = u.email || "";
 
   try {
+
     await db.ref("users/" + u.uid + "/profile").update({
+
       email: u.email || "",
       name: (u.displayName || "Игрок").slice(0, 24),
       photo: u.photoURL || "",
       lastLogin: firebase.database.ServerValue.TIMESTAMP
+
     });
+
   } catch(e) {
+
     console.error("Ошибка сохранения профиля:", e);
 
     $("status").textContent =
       "Не удалось синхронизировать профиль с сервером.";
+
   }
+
 });
+
 </script>
 
 </body>
