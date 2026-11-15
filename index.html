@@ -30,6 +30,8 @@ body {
     radial-gradient(ellipse at 50% 35%, #40598c 0%, transparent 55%),
     linear-gradient(135deg, var(--bg1), var(--bg2));
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
 }
 
@@ -57,8 +59,6 @@ body::before {
   position: relative;
   z-index: 10;
 }
-
-/* ЛОГОТИП СЛЕВА */
 
 .brand {
   display: flex;
@@ -94,7 +94,7 @@ body::before {
   box-shadow: 0 5px 25px #7093ee55;
 }
 
-/* КНОПКИ ПО ЦЕНТРУ */
+/* НАВИГАЦИЯ */
 
 .navigation {
   display: flex;
@@ -117,7 +117,7 @@ body::before {
   font-weight: bold;
   cursor: pointer;
   white-space: nowrap;
-  transition: transform .25s, background .25s, box-shadow .25s;
+  transition: .25s;
 }
 
 .nav-button:hover {
@@ -130,7 +130,7 @@ body::before {
   transform: scale(.97);
 }
 
-/* АВАТАРКА СПРАВА */
+/* АВАТАРКА */
 
 .avatar-button {
   width: 47px;
@@ -168,12 +168,13 @@ body::before {
 /* ГЛАВНЫЙ ЭКРАН */
 
 #home {
-  min-height: calc(100vh - 78px);
+  flex: 1;
+  min-height: 650px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 30px 20px 100px;
+  padding: 50px 20px 90px;
   text-align: center;
 }
 
@@ -232,12 +233,13 @@ body::before {
 
 #subpage {
   display: none;
-  min-height: calc(100vh - 78px);
+  flex: 1;
+  min-height: 550px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding: 30px 20px;
+  padding: 40px 20px;
 }
 
 .coming-title {
@@ -257,11 +259,130 @@ body::before {
   margin-top: 15px;
 }
 
+/* СТРАНИЦА О НАС */
+
+.about-card {
+  max-width: 650px;
+  width: 100%;
+  padding: 35px;
+  border-radius: 20px;
+  background: #ffffff12;
+  border: 1px solid #ffffff30;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 15px 60px #00000020;
+}
+
+.about-card h1 {
+  font-size: 38px;
+  margin: 0 0 20px;
+}
+
+.about-card p {
+  color: #d0d9ef;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.telegram-text {
+  color: #a9c5ff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: .2s;
+}
+
+.telegram-text:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ПОДВАЛ */
+
+.footer {
+  width: 100%;
+  padding: 30px 35px 20px;
+  background: #080e1c66;
+  border-top: 1px solid #ffffff18;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  position: relative;
+  z-index: 5;
+}
+
+.footer-content {
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-size: 22px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.footer-brand span {
+  color: #a9c5ff;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #dce5fa;
+  background: #ffffff0d;
+  border: 1px solid #ffffff25;
+  border-radius: 10px;
+  padding: 11px 15px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .25s;
+  white-space: nowrap;
+}
+
+.footer-button:hover {
+  color: white;
+  background: #ffffff20;
+  border-color: #a9c5ff80;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px #00000025;
+}
+
+.footer-button .telegram-icon {
+  font-size: 17px;
+}
+
+.footer-bottom {
+  max-width: 1250px;
+  margin: 22px auto 0;
+  padding-top: 17px;
+  border-top: 1px solid #ffffff15;
+  text-align: center;
+  color: #8999ba;
+  font-size: 12px;
+}
+
 /* ВХОД */
 
 #login {
   display: none;
-  min-height: 100vh;
+  flex: 1;
+  min-height: 500px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -318,11 +439,11 @@ body::before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .profile-photo {
-  position: absolute;
+  position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -331,7 +452,7 @@ body::before {
 }
 
 .profile-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: linear-gradient(
     to bottom,
@@ -347,8 +468,8 @@ body::before {
   text-align: center;
   width: 90%;
   max-width: 400px;
-  margin-top: auto;
-  margin-bottom: 12vh;
+  margin: auto;
+  padding: 100px 0 150px;
 }
 
 .profile-content h2 {
@@ -363,8 +484,8 @@ body::before {
 }
 
 .back-button {
-  position: absolute;
-  z-index: 3;
+  position: fixed;
+  z-index: 25;
   top: 25px;
   left: 25px;
   border: 1px solid #ffffff45;
@@ -376,9 +497,35 @@ body::before {
   cursor: pointer;
 }
 
+.back-button:hover {
+  background: #ffffff35;
+}
+
+/* ПОДВАЛ В ПРОФИЛЕ */
+
+.profile-footer {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  margin-top: auto;
+  background: #080e1cbb;
+  border-top: 1px solid #ffffff25;
+  padding: 22px 20px 15px;
+  backdrop-filter: blur(18px);
+}
+
+.profile-footer .footer-content {
+  justify-content: center;
+}
+
+.profile-footer .footer-bottom {
+  margin-top: 15px;
+}
+
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 
 @media(max-width: 850px) {
+
   .topbar {
     flex-wrap: wrap;
     justify-content: space-between;
@@ -401,9 +548,19 @@ body::before {
     padding: 10px 13px;
     font-size: 12px;
   }
+
+  .footer {
+    padding: 25px 15px 17px;
+  }
+
+  .footer-content {
+    justify-content: center;
+    text-align: center;
+  }
 }
 
-@media(max-width: 450px) {
+@media(max-width: 500px) {
+
   .navigation {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -426,6 +583,33 @@ body::before {
     font-size: 12px;
     letter-spacing: 2px;
   }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .footer-button {
+    white-space: normal;
+    text-align: center;
+    min-height: 45px;
+    padding: 10px 7px;
+    font-size: 11px;
+  }
+
+  .footer-brand {
+    width: 100%;
+    text-align: center;
+  }
+
+  .about-card {
+    padding: 25px 18px;
+  }
+
+  .about-card h1 {
+    font-size: 30px;
+  }
 }
 
 [hidden] {
@@ -436,20 +620,16 @@ body::before {
 
 <body>
 
-<!-- ПОСТОЯННАЯ ВЕРХНЯЯ ПАНЕЛЬ -->
+<!-- ВЕРХНЯЯ ПАНЕЛЬ -->
 
 <header class="topbar" id="topbar" hidden>
 
-  <!-- ЛОГОТИП СЛЕВА -->
-
-  <div class="brand" id="brand" onclick="goHome()">
+  <div class="brand" onclick="goHome()">
     <div class="brand-icon">☁</div>
     <div>Be<span>Cloud</span></div>
   </div>
 
-  <!-- КНОПКИ ПО ЦЕНТРУ -->
-
-  <nav class="navigation" id="navigation">
+  <nav class="navigation">
 
     <button class="nav-button" onclick="openPage('play')">
       Начать играть
@@ -468,8 +648,6 @@ body::before {
     </button>
 
   </nav>
-
-  <!-- АВАТАРКА СПРАВА -->
 
   <button class="avatar-button" id="avatarButton" title="Мой аккаунт">
     <img id="avatar" alt="Аккаунт" hidden>
@@ -523,6 +701,48 @@ body::before {
 
 </main>
 
+<!-- О НАС -->
+
+<main id="aboutPage" hidden style="
+  flex:1;
+  min-height:550px;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+">
+
+  <div class="about-card">
+
+    <h1>О BeCloud</h1>
+
+    <p>
+      BeCloud — это игровая платформа, над которой мы сейчас работаем.
+      Наша цель — создать удобное место для игроков,
+      где можно будет играть, общаться и пользоваться игровыми возможностями.
+    </p>
+
+    <p>
+      Следите за новостями и разработкой BeCloud
+      в нашем Telegram-канале:
+    </p>
+
+    <p>
+      <a class="telegram-text"
+         href="https://t.me/CsLite_game"
+         target="_blank"
+         rel="noopener noreferrer">
+        ✈ Наш Telegram-канал @CsLite_game
+      </a>
+    </p>
+
+    <p>
+      Примерная дата выпуска платформы — 27 ноября 2026 года.
+    </p>
+
+  </div>
+
+</main>
+
 <!-- ВХОД -->
 
 <main id="login">
@@ -550,6 +770,54 @@ body::before {
 
 </main>
 
+<!-- ОБЩИЙ ПОДВАЛ -->
+
+<footer class="footer" id="mainFooter" hidden>
+
+  <div class="footer-content">
+
+    <div class="footer-brand">
+      Be<span>Cloud</span>
+    </div>
+
+    <div class="footer-links">
+
+      <a class="footer-button"
+         href="https://t.me/CsLite_game"
+         target="_blank"
+         rel="noopener noreferrer">
+        <span class="telegram-icon">✈</span>
+        Наш Telegram
+      </a>
+
+      <a class="footer-button"
+         href="https://t.me/CsLite_game_chat"
+         target="_blank"
+         rel="noopener noreferrer">
+        <span class="telegram-icon">✈</span>
+        Наш Telegram-чат
+      </a>
+
+      <button class="footer-button"
+              onclick="openPage('privacy')">
+        🔒 Политика конфиденциальности
+      </button>
+
+      <button class="footer-button"
+              onclick="openPage('rules')">
+        📋 Правила пользования
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 BeCloud. Все права защищены.
+  </div>
+
+</footer>
+
 <!-- ПРОФИЛЬ -->
 
 <div id="profile">
@@ -573,6 +841,52 @@ body::before {
     </button>
 
   </div>
+
+  <!-- ПОДВАЛ ПРОФИЛЯ -->
+
+  <footer class="profile-footer">
+
+    <div class="footer-content">
+
+      <div class="footer-brand">
+        Be<span>Cloud</span>
+      </div>
+
+      <div class="footer-links">
+
+        <a class="footer-button"
+           href="https://t.me/CsLite_game"
+           target="_blank"
+           rel="noopener noreferrer">
+          ✈ Наш Telegram
+        </a>
+
+        <a class="footer-button"
+           href="https://t.me/CsLite_game_chat"
+           target="_blank"
+           rel="noopener noreferrer">
+          ✈ Наш Telegram-чат
+        </a>
+
+        <button class="footer-button"
+                onclick="openPage('privacy')">
+          🔒 Политика конфиденциальности
+        </button>
+
+        <button class="footer-button"
+                onclick="openPage('rules')">
+          📋 Правила пользования
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 BeCloud. Все права защищены.
+    </div>
+
+  </footer>
 
 </div>
 
@@ -605,39 +919,55 @@ const $ = id => document.getElementById(id);
 
 let user = null;
 
+/* СКРЫТЬ ВСЕ СТРАНИЦЫ */
+
+function hidePages() {
+  $("home").hidden = true;
+  $("subpage").style.display = "none";
+  $("aboutPage").hidden = true;
+  $("login").style.display = "none";
+  $("profile").style.display = "none";
+}
+
 /* ГЛАВНОЕ МЕНЮ */
 
 function goHome() {
 
-  $("home").hidden = false;
-  $("subpage").style.display = "none";
-  $("login").style.display = "none";
+  hidePages();
 
-  closeProfile();
+  $("home").hidden = false;
 }
 
-/* СТРАНИЦЫ */
+/* ОТКРЫТИЕ СТРАНИЦ */
 
 function openPage(page) {
 
-  $("home").hidden = true;
-  $("subpage").style.display = "flex";
-
-  closeProfile();
+  hidePages();
 
   const titles = {
     play: "Начать играть",
     balance: "Пополнить баланс",
     forum: "Форум",
-    about: "О нас"
+    privacy: "Политика конфиденциальности",
+    rules: "Правила пользования"
   };
+
+  if (page === "about") {
+
+    $("aboutPage").hidden = false;
+    $("aboutPage").style.display = "flex";
+
+    return;
+  }
+
+  $("subpage").style.display = "flex";
 
   $("subpage").querySelector(".coming-title").textContent = "Скоро!";
 
   $("subpage").querySelector(".coming-date").textContent = "27.11.2026";
 
   $("subpage").querySelector(".coming-description").textContent =
-    titles[page] + " — скоро в BeCloud!";
+    (titles[page] || "Раздел") + " — скоро в BeCloud!";
 }
 
 /* ПРОФИЛЬ */
@@ -654,6 +984,7 @@ function openProfile() {
   $("profilePhoto").src =
     user.photoURL ||
     "https://placehold.co/800x1200/263b69/ffffff?text=BeCloud";
+
 }
 
 function closeProfile() {
@@ -671,19 +1002,28 @@ $("btnLogin").onclick = async () => {
   const provider = new firebase.auth.GoogleAuthProvider();
 
   try {
+
     await auth.signInWithPopup(provider);
+
   } catch(e) {
+
     $("err").textContent = "Ошибка входа: " + e.message;
+
   }
+
 };
 
 /* ВЫХОД */
 
 $("btnOut").onclick = async () => {
 
-  await auth.signOut();
+  try {
+    await auth.signOut();
+    closeProfile();
+  } catch(e) {
+    console.error("Ошибка выхода:", e);
+  }
 
-  closeProfile();
 };
 
 /* АВАТАРКА */
@@ -702,6 +1042,7 @@ function updateAvatar(u) {
     $("avatarPlaceholder").hidden = false;
 
   }
+
 }
 
 /* АВТОРИЗАЦИЯ */
@@ -712,14 +1053,12 @@ auth.onAuthStateChanged(async u => {
 
   if (!u) {
 
-    $("topbar").hidden = true;
+    hidePages();
 
-    $("home").hidden = true;
-    $("subpage").style.display = "none";
+    $("topbar").hidden = true;
+    $("mainFooter").hidden = true;
 
     $("login").style.display = "flex";
-
-    closeProfile();
 
     return;
   }
@@ -727,9 +1066,11 @@ auth.onAuthStateChanged(async u => {
   $("login").style.display = "none";
 
   $("topbar").hidden = false;
+  $("mainFooter").hidden = false;
+
+  hidePages();
 
   $("home").hidden = false;
-  $("subpage").style.display = "none";
 
   updateAvatar(u);
 
