@@ -65,13 +65,15 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <script>
-// 1) Вставь свои значения из Firebase: Project settings → Your apps → Web app → Config
+// 1) Конфиг Firebase-проекта BeCloud
 const FIREBASE_CONFIG = {
-  apiKey: "ВСТАВЬ_API_KEY",
+  apiKey: "AIzaSyDFLsn0od0tMPWvcGLhhO4iXbxISqS1sSA",
   authDomain: "becloud-gaming-platform.firebaseapp.com",
-  databaseURL: "https://becloud-gaming-platform-default-rtdb.firebaseio.com",
+  databaseURL: "https://becloud-gaming-platform-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "becloud-gaming-platform",
-  appId: "ВСТАВЬ_APP_ID"
+  storageBucket: "becloud-gaming-platform.firebasestorage.app",
+  messagingSenderId: "954726716854",
+  appId: "1:954726716854:web:fe02f0bc7087efbdabdd17"
 };
 // 2) Номер версии, которая лежит на хостинге. Поднимай вместе с /config/version в Firebase.
 const BUILD = 1;
@@ -81,7 +83,7 @@ const $ = id => document.getElementById(id);
 const show = id => { ["login", "menu"].forEach(x => $(x).hidden = x !== id); };
 const mailKey = e => e.toLowerCase().replace(/\./g, ",");
 
-if (FIREBASE_CONFIG.apiKey.startsWith("ВСТАВЬ")) {
+if (!FIREBASE_CONFIG.apiKey) {
   $("sub").textContent = "Открой index.html и вставь firebaseConfig (apiKey и appId).";
 } else {
   firebase.initializeApp(FIREBASE_CONFIG);
