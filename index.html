@@ -12,7 +12,6 @@
   --bg1: #10182d;
   --bg2: #263b69;
   --white: #ffffff;
-  --mute: #b8c4df;
 }
 
 * {
@@ -49,16 +48,93 @@ body::before {
 
 .topbar {
   width: 100%;
-  height: 85px;
-  padding: 17px 35px;
+  min-height: 78px;
+  padding: 12px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  z-index: 10;
 }
 
+/* ЛОГОТИП СЛЕВА */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: .5px;
+  user-select: none;
+  transition: .25s;
+  flex-shrink: 0;
+}
+
+.brand:hover {
+  opacity: .8;
+  transform: scale(1.04);
+}
+
+.brand span {
+  color: #a9c5ff;
+}
+
+.brand-icon {
+  width: 39px;
+  height: 39px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7898ed, #405fba);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  box-shadow: 0 5px 25px #7093ee55;
+}
+
+/* КНОПКИ ПО ЦЕНТРУ */
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.nav-button {
+  color: #ffffff;
+  background: #aab5c522;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #ffffff30;
+  border-radius: 13px;
+  padding: 11px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform .25s, background .25s, box-shadow .25s;
+}
+
+.nav-button:hover {
+  transform: scale(1.09);
+  background: #d5e0f044;
+  box-shadow: 0 8px 30px #00000025;
+}
+
+.nav-button:active {
+  transform: scale(.97);
+}
+
+/* АВАТАРКА СПРАВА */
+
 .avatar-button {
-  width: 49px;
-  height: 49px;
+  width: 47px;
+  height: 47px;
   border-radius: 50%;
   border: 2px solid #ffffff70;
   overflow: hidden;
@@ -66,6 +142,7 @@ body::before {
   background: #ffffff20;
   transition: .25s;
   padding: 0;
+  flex-shrink: 0;
 }
 
 .avatar-button:hover {
@@ -88,80 +165,10 @@ body::before {
   height: 100%;
 }
 
-/* ЛОГОТИП */
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  cursor: pointer;
-  font-size: 25px;
-  font-weight: bold;
-  letter-spacing: .5px;
-  user-select: none;
-  transition: .25s;
-}
-
-.brand:hover {
-  opacity: .8;
-  transform: scale(1.04);
-}
-
-.brand span {
-  color: #a9c5ff;
-}
-
-.brand-icon {
-  width: 37px;
-  height: 37px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #7898ed, #405fba);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  box-shadow: 0 5px 25px #7093ee55;
-}
-
-/* НАВИГАЦИЯ */
-
-.navigation {
-  display: flex;
-  justify-content: center;
-  gap: 13px;
-  flex-wrap: wrap;
-  padding: 0 20px;
-  margin-top: -12px;
-}
-
-.nav-button {
-  color: #ffffff;
-  background: #aab5c522;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #ffffff30;
-  border-radius: 13px;
-  padding: 12px 22px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform .25s, background .25s, box-shadow .25s;
-}
-
-.nav-button:hover {
-  transform: scale(1.09);
-  background: #d5e0f044;
-  box-shadow: 0 8px 30px #00000025;
-}
-
-.nav-button:active {
-  transform: scale(.97);
-}
-
-/* ГЛАВНАЯ */
+/* ГЛАВНЫЙ ЭКРАН */
 
 #home {
-  min-height: calc(100vh - 105px);
+  min-height: calc(100vh - 78px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -225,7 +232,7 @@ body::before {
 
 #subpage {
   display: none;
-  min-height: calc(100vh - 85px);
+  min-height: calc(100vh - 78px);
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -250,7 +257,7 @@ body::before {
   margin-top: 15px;
 }
 
-/* АВТОРИЗАЦИЯ */
+/* ВХОД */
 
 #login {
   display: none;
@@ -355,10 +362,6 @@ body::before {
   margin-bottom: 25px;
 }
 
-.profile-content button {
-  margin-top: 10px;
-}
-
 .back-button {
   position: absolute;
   z-index: 3;
@@ -373,25 +376,42 @@ body::before {
   cursor: pointer;
 }
 
-.back-button:hover {
-  background: #ffffff35;
-}
-
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 
-@media(max-width: 650px) {
+@media(max-width: 850px) {
   .topbar {
-    padding: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 13px 15px;
+    gap: 12px;
+  }
+
+  .brand {
+    font-size: 21px;
   }
 
   .navigation {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
     gap: 8px;
-    margin-top: -12px;
   }
 
   .nav-button {
-    padding: 11px 13px;
+    padding: 10px 13px;
     font-size: 12px;
+  }
+}
+
+@media(max-width: 450px) {
+  .navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav-button {
+    width: 100%;
+    padding: 12px 5px;
   }
 
   .registration-message {
@@ -416,41 +436,49 @@ body::before {
 
 <body>
 
+<!-- ПОСТОЯННАЯ ВЕРХНЯЯ ПАНЕЛЬ -->
+
 <header class="topbar" id="topbar" hidden>
+
+  <!-- ЛОГОТИП СЛЕВА -->
+
+  <div class="brand" id="brand" onclick="goHome()">
+    <div class="brand-icon">☁</div>
+    <div>Be<span>Cloud</span></div>
+  </div>
+
+  <!-- КНОПКИ ПО ЦЕНТРУ -->
+
+  <nav class="navigation" id="navigation">
+
+    <button class="nav-button" onclick="openPage('play')">
+      Начать играть
+    </button>
+
+    <button class="nav-button" onclick="openPage('balance')">
+      Пополнить баланс
+    </button>
+
+    <button class="nav-button" onclick="openPage('forum')">
+      Форум
+    </button>
+
+    <button class="nav-button" onclick="openPage('about')">
+      О нас
+    </button>
+
+  </nav>
+
+  <!-- АВАТАРКА СПРАВА -->
 
   <button class="avatar-button" id="avatarButton" title="Мой аккаунт">
     <img id="avatar" alt="Аккаунт" hidden>
     <span class="avatar-placeholder" id="avatarPlaceholder">👤</span>
   </button>
 
-  <div class="brand" id="brand" hidden onclick="goHome()">
-    <div class="brand-icon">☁</div>
-    <div>Be<span>Cloud</span></div>
-  </div>
-
-  <div style="width:49px"></div>
-
 </header>
 
-<nav class="navigation" id="navigation" hidden>
-
-  <button class="nav-button" onclick="openPage('play')">
-    Начать играть
-  </button>
-
-  <button class="nav-button" onclick="openPage('balance')">
-    Пополнить баланс
-  </button>
-
-  <button class="nav-button" onclick="openPage('forum')">
-    Форум
-  </button>
-
-  <button class="nav-button" onclick="openPage('about')">
-    О нас
-  </button>
-
-</nav>
+<!-- ГЛАВНАЯ -->
 
 <main id="home" hidden>
 
@@ -479,6 +507,8 @@ body::before {
 
 </main>
 
+<!-- ВНУТРЕННИЕ СТРАНИЦЫ -->
+
 <main id="subpage">
 
   <h1 class="coming-title">Скоро!</h1>
@@ -492,6 +522,8 @@ body::before {
   </p>
 
 </main>
+
+<!-- ВХОД -->
 
 <main id="login">
 
@@ -517,6 +549,8 @@ body::before {
   </div>
 
 </main>
+
+<!-- ПРОФИЛЬ -->
 
 <div id="profile">
 
@@ -544,6 +578,8 @@ body::before {
 
 <p id="status" style="text-align:center;color:#c0cce5"></p>
 
+<!-- FIREBASE -->
+
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
@@ -569,25 +605,23 @@ const $ = id => document.getElementById(id);
 
 let user = null;
 
+/* ГЛАВНОЕ МЕНЮ */
+
 function goHome() {
 
   $("home").hidden = false;
   $("subpage").style.display = "none";
   $("login").style.display = "none";
 
-  $("navigation").hidden = false;
-  $("brand").hidden = true;
-
   closeProfile();
 }
+
+/* СТРАНИЦЫ */
 
 function openPage(page) {
 
   $("home").hidden = true;
   $("subpage").style.display = "flex";
-
-  $("navigation").hidden = false;
-  $("brand").hidden = false;
 
   closeProfile();
 
@@ -599,11 +633,14 @@ function openPage(page) {
   };
 
   $("subpage").querySelector(".coming-title").textContent = "Скоро!";
+
   $("subpage").querySelector(".coming-date").textContent = "27.11.2026";
 
   $("subpage").querySelector(".coming-description").textContent =
     titles[page] + " — скоро в BeCloud!";
 }
+
+/* ПРОФИЛЬ */
 
 function openProfile() {
 
@@ -625,6 +662,8 @@ function closeProfile() {
 
 $("avatarButton").onclick = openProfile;
 
+/* GOOGLE LOGIN */
+
 $("btnLogin").onclick = async () => {
 
   $("err").textContent = "";
@@ -638,12 +677,16 @@ $("btnLogin").onclick = async () => {
   }
 };
 
+/* ВЫХОД */
+
 $("btnOut").onclick = async () => {
 
   await auth.signOut();
 
   closeProfile();
 };
+
+/* АВАТАРКА */
 
 function updateAvatar(u) {
 
@@ -661,6 +704,8 @@ function updateAvatar(u) {
   }
 }
 
+/* АВТОРИЗАЦИЯ */
+
 auth.onAuthStateChanged(async u => {
 
   user = u;
@@ -668,7 +713,6 @@ auth.onAuthStateChanged(async u => {
   if (!u) {
 
     $("topbar").hidden = true;
-    $("navigation").hidden = true;
 
     $("home").hidden = true;
     $("subpage").style.display = "none";
@@ -683,9 +727,6 @@ auth.onAuthStateChanged(async u => {
   $("login").style.display = "none";
 
   $("topbar").hidden = false;
-  $("navigation").hidden = false;
-
-  $("brand").hidden = true;
 
   $("home").hidden = false;
   $("subpage").style.display = "none";
