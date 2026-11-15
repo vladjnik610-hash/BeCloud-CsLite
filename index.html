@@ -865,43 +865,52 @@ let user = null;
 const coverRef = db.ref("settings/site/backgroundUrl");
 
 let currentCoverUrl = "";
-
 let coverRequestId = 0;
 
+/*
+  ВАЖНО:
+  1) Для любых ссылок вида https://ibb.co.com/ID разверни worker.js
+     (файл прилагается) и вставь URL Worker ниже.
+  2) Для указанной пользователем ссылки уже добавлен прямой URL
+     как резервный вариант — она заработает и без Worker.
+*/
+const IMGBB_WORKER_URL = ""; // Например: https://imgbb-resolver.ТВОЙ-АККАУНТ.workers.dev
+
+const IMGBB_KNOWN_LINKS = {
+  "https://ibb.co.com/V08r78Y5":
+    "https://i.ibb.co/NgzQ8z2b/photo-2026-11-15-23-27-55.jpg"
+};
+
 async function getImgBBDirectUrl(pageUrl) {
-  // Страница ImgBB (например, https://ibb.co.com/V08r78Y5)
-  // содержит прямую ссылку на файл в meta property="og:image".
-  // Получаем HTML через CORS-прокси, чтобы браузер мог его прочитать.
-  const proxies = [
-    "https://api.allorigins.win/raw?url=" + encodeURIComponent(pageUrl),
-    "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(pageUrl)
-  ];
+  const normalized = pageUrl.replace(/\/+$/, "");
 
-  for (const proxyUrl of proxies) {
-    try {
-      const response = await fetch(proxyUrl);
-      if (!response.ok) continue;
+  // Сначала проверяем известные прямые ссылки.
+  if (IMGBB_KNOWN_LINKS[normalized]) {
+    return IMGBB_KNOWN_LINKS[normalized];
+  }
 
-      const html = await response.text();
-      const doc = new DOMParser().parseFromString(html, "text/html");
+  // Надёжный универсальный вариант — свой Worker, который читает og:image.
+  if (IMGBB_WORKER_URL.trim()) {
+    const endpoint = new URL(IMGBB_WORKER_URL);
+    endpoint.searchParams.set("url", pageUrl);
 
-      const metaImage =
-        doc.querySelector('meta[property="og:image"]')?.content ||
-        doc.querySelector('meta[name="twitter:image"]')?.content;
-
-      if (metaImage) {
-        const directUrl = new URL(metaImage, pageUrl);
-        if (directUrl.protocol === "https:" || directUrl.protocol === "http:") {
-          return directUrl.href;
-        }
-      }
-    } catch (error) {
-      console.warn("Не удалось получить изображение через прокси:", error);
+    const response = await fetch(endpoint.href);
+    if (!response.ok) {
+      throw new Error("ImgBB Worker вернул HTTP " + response.status);
     }
+
+    const data = await response.json();
+    if (data && typeof data.image === "string") {
+      const imageUrl = new URL(data.image);
+      if (imageUrl.protocol === "https:" && /(^|\.)ibb\.co$/i.test(imageUrl.hostname)) {
+        return imageUrl.href;
+      }
+    }
+    throw new Error(data?.error || "Worker не вернул прямую ссылку на изображение.");
   }
 
   throw new Error(
-    "Не удалось получить прямую ссылку ImgBB. Попробуй скопировать Direct link на ImgBB."
+    "Для этой ссылки ImgBB нужен Worker. Разверни приложенный worker.js и вставь его адрес в IMGBB_WORKER_URL."
   );
 }
 
@@ -922,7 +931,6 @@ async function setCover(url) {
   }
 
   let parsedUrl;
-
   try {
     parsedUrl = new URL(cleanUrl);
   } catch {
@@ -938,19 +946,18 @@ async function setCover(url) {
   currentCoverUrl = cleanUrl;
 
   try {
-    let imageUrl = parsedUrl.href;
     const host = parsedUrl.hostname.toLowerCase();
-
-    // Поддержка ссылок на страницу ImgBB, а не только Direct link.
     const isImgBBPage =
       host === "ibb.co" ||
       host === "www.ibb.co" ||
       host === "ibb.co.com" ||
       host === "www.ibb.co.com";
 
-    if (isImgBBPage) {
-      imageUrl = await getImgBBDirectUrl(parsedUrl.href);
-    }
+    const imageUrl = isImgBBPage
+      ? await getImgBBDirectUrl(parsedUrl.href.replace(/\/+$/, ""))
+      : parsedUrl.href;
+
+    if (requestId !== coverRequestId) return;
 
     const safeUrl = new URL(imageUrl);
     if (safeUrl.protocol !== "https:" && safeUrl.protocol !== "http:") {
@@ -958,19 +965,15 @@ async function setCover(url) {
     }
 
     const image = new Image();
-
     image.onload = () => {
-      // Не позволяем старому запросу заменить более новую обложку.
       if (requestId !== coverRequestId) return;
-
-      cover.style.backgroundImage = `url("${safeUrl.href.replace(/["\\\\]/g, "")}")`;
+      cover.style.backgroundImage = `url("${safeUrl.href.replace(/["\\]/g, "")}")`;
+      console.info("Обложка BeCloud загружена:", safeUrl.href);
     };
-
     image.onerror = () => {
       if (requestId !== coverRequestId) return;
-      console.warn("Не удалось загрузить изображение обложки BeCloud:", safeUrl.href);
+      console.error("Браузер не смог загрузить файл изображения:", safeUrl.href);
     };
-
     image.src = safeUrl.href;
   } catch (error) {
     if (requestId !== coverRequestId) return;
